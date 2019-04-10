@@ -1,0 +1,10 @@
+# The Docker image to run your workspace in. Defaults to gitpod/workspace-full
+image: "ashdev/docker-spigot"
+# Command to start on workspace startup (optional)
+tasks:
+  - command: "https://hub.spigotmc.org/jenkins/job/BuildTools/lastStableBuild/artifact/target/BuildTools.jar"
+  - command: "java -jar BuildTools.jar --rev 1.9"
+  - command: "mvn install:install-file -Dfile=spigot-1.9.jar -DgroupId=org.spigotmc -DartifactId=spigot19R1 -Dversion=1.9.0-R1.0 -Dpackaging=jar"
+# Ports to expose on workspace startup (optional)
+ports:
+  - port: 8000
